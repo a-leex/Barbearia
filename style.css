@@ -1,0 +1,231 @@
+/* RESET BÁSICO E ESTILOS GERAIS */
+* {
+    box-sizing: border-box; /* Inclui padding e border no tamanho total do elemento */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(to bottom, #2c2c2c, #37b2e2); /* Gradiente escuro para azul claro */
+  color: #f0f0f0; /* Cor de texto mais clara */
+  text-align: center;
+  line-height: 1.6;
+  min-height: 100vh; /* Garante que o body ocupe a altura total da viewport */
+  display: flex; /* Para centralizar o startScreen */
+  flex-direction: column; /* Organiza os elementos em coluna */
+}
+
+/* CLASSE PARA ESCONDER ELEMENTOS (AGORA ESPECÍFICA PARA CONTEÚDO) */
+.content-hidden {
+  display: none !important; /* !important garante que esta regra seja aplicada */
+  opacity: 0; /* Para transição de opacidade */
+  transition: opacity 0.5s ease-out; /* Transição para sumir */
+}
+
+/* CLASSE PARA MOSTRAR ELEMENTOS */
+.content-visible {
+    display: flex; /* OU block, dependendo do elemento. Ex: mainContent pode ser block ou flex */
+    opacity: 1;
+    transition: opacity 0.5s ease-in; /* Transição para aparecer */
+}
+
+/* ESTILOS DE BOTÃO GERAL */
+button {
+  padding: 12px 25px;
+  margin: 10px;
+  background-color: #0eaaa2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+  background-color: #26aeec;
+  transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* ESTILOS PARA IMAGENS DE CORTES */
+img {
+  max-width: 100%;
+  height: auto;
+  width: 280px;
+  border-radius: 12px;
+  margin: 15px 0;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* TELA DE INÍCIO */
+#startScreen {
+  display: flex; /* Garante que flexbox funcione aqui */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to bottom, #2c2c2c, #37b2e2);
+  position: fixed; /* Fixa a tela de início para cobrir tudo */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Garante que fique por cima de tudo */
+  transition: opacity 0.5s ease-out;
+}
+
+/* ESTILOS DO MENU DE NAVEGAÇÃO */
+.menu {
+  background-color: #1a1a1a;
+  padding: 15px 0;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.menu button {
+    margin: 0 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: transparent;
+    border: 2px solid #0eaaa2;
+    box-shadow: none;
+}
+
+.menu button:hover {
+    background-color: #0eaaa2;
+    transform: none;
+}
+
+/* ESTILOS PARA AS "LINHAS" (SEÇÕES) */
+.section {
+  background-color: rgba(0, 0, 0, 0.5);
+  margin: 40px auto;
+  padding: 50px 25px;
+  border-radius: 20px;
+  max-width: 960px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  text-align: left;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: transform 0.3s ease-out;
+}
+
+.section h2 {
+    color: #37b2e2;
+    font-size: 2.8em;
+    margin-bottom: 25px;
+    border-bottom: 3px solid #0eaaa2;
+    padding-bottom: 15px;
+    text-align: center;
+}
+
+.section p {
+    font-size: 1.15em;
+    color: #e0e0e0;
+    margin-bottom: 1em;
+}
+
+/* ESTILOS PARA AS ABAS DE CORTE DENTRO DA SEÇÃO "CORTES" */
+.tabs {
+  margin-top: 35px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.tabs button {
+    background-color: #37b2e2;
+    border: none;
+    font-size: 1em;
+    padding: 10px 22px;
+    margin: 0;
+}
+
+.tabs button:hover {
+    background-color: #0eaaa2;
+}
+
+/* ESTILOS PARA O CONTEÚDO DE CADA ABA DE CORTE */
+.tabcontent {
+  margin-top: 30px;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 30px;
+  border-radius: 15px;
+  display: flex; /* Será alterado para flexbox quando visível */
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.tabcontent p {
+    margin-top: 15px;
+    font-size: 1.1em;
+    color: #c0c0c0;
+}
+
+/* MEDIA QUERIES PARA RESPONSIVIDADE */
+@media (min-width: 768px) {
+    .section {
+        padding: 60px 40px;
+    }
+
+    .section h2 {
+        font-size: 3.2em;
+    }
+
+    .tabcontent {
+        flex-direction: row;
+        text-align: left;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .tabcontent img {
+        margin-right: 30px;
+        margin-bottom: 0;
+    }
+
+    .tabcontent p {
+        flex: 1;
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .menu button {
+        margin: 5px 8px;
+        font-size: 0.9em;
+        padding: 8px 15px;
+    }
+
+    .section {
+        margin: 25px 15px;
+        padding: 35px 20px;
+    }
+
+    .section h2 {
+        font-size: 2.2em;
+    }
+
+    .tabs button {
+        font-size: 0.9em;
+        padding: 8px 18px;
+    }
+
+    .tabcontent {
+        padding: 20px;
+    }
+}
